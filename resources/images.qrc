@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/authdialog">
+        <file>images/authdialog_bg.png</file>
+        <file>images/pbAuth_icon.png</file>
+        <file>images/flywork_client.png</file>
+    </qresource>
+</RCC>

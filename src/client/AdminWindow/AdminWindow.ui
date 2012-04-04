@@ -1,0 +1,616 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AdminWindow</class>
+ <widget class="QMainWindow" name="AdminWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>520</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>640</width>
+    <height>520</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>640</width>
+    <height>520</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>FlyWork - Панель администратора</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../../resources/images.qrc">
+    <normaloff>:/authdialog/images/flywork_client.png</normaloff>:/authdialog/images/flywork_client.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QTabWidget" name="tabWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>621</width>
+      <height>461</height>
+     </rect>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <widget class="QWidget" name="tabWorkEdit">
+     <attribute name="title">
+      <string>Редактирование работы</string>
+     </attribute>
+     <widget class="QWidget" name="verticalLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>10</y>
+        <width>251</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="fWorkStatus">
+       <item>
+        <layout class="QFormLayout" name="fWorkEdit">
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="lWorkTitle">
+           <property name="text">
+            <string>Название работы</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="leWorkTitle">
+           <property name="placeholderText">
+            <string>Введите название работы</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="lEndTime">
+           <property name="text">
+            <string>Время окончания</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QTimeEdit" name="teEndTime">
+           <property name="buttonSymbols">
+            <enum>QAbstractSpinBox::PlusMinus</enum>
+           </property>
+           <property name="specialValueText">
+            <string/>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0" colspan="2">
+          <widget class="QPushButton" name="pbSave">
+           <property name="text">
+            <string>Обновить информацию</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="spacer_1">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>340</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QLabel" name="lWorkStatus">
+         <property name="text">
+          <string>Выберите текущий статус работы:</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="lwWorkStatus"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pbWorkStatus">
+         <property name="text">
+          <string>Отправить статус</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>321</width>
+        <height>411</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="textWelcome">
+       <item>
+        <widget class="QLabel" name="lTitle">
+         <property name="text">
+          <string>Добро пожаловать в панель администратора!</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lWelcome">
+         <property name="text">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:9pt; font-weight:600;&quot;&gt;Чтобы начать работу:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;1. Сначала выберите название для работы.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;2. Установите время окончания работы&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;3. Отправьте данные на сервер&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;4. Смените статус на нужный.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;5. Отправьте выбранный статус на сервер&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="spacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabTasksEdit">
+     <attribute name="title">
+      <string>Редактирование заданий</string>
+     </attribute>
+     <widget class="QWidget" name="formLayoutWidget_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>10</y>
+        <width>271</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formTask">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lTaskId">
+         <property name="text">
+          <string>Задание:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="cbTaskId"/>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="lTaskType">
+         <property name="text">
+          <string>Тип задания:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="cbTaskType"/>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lTaskName">
+         <property name="text">
+          <string>Название:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="leTaskName">
+         <property name="placeholderText">
+          <string>Укажите название для задания</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTextEdit" name="teTaskDesc">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>100</y>
+        <width>581</width>
+        <height>151</height>
+       </rect>
+      </property>
+      <property name="verticalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOn</enum>
+      </property>
+      <property name="horizontalScrollBarPolicy">
+       <enum>Qt::ScrollBarAlwaysOff</enum>
+      </property>
+      <property name="documentTitle">
+       <string/>
+      </property>
+      <property name="textInteractionFlags">
+       <set>Qt::TextEditorInteraction</set>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbTaskSave">
+      <property name="geometry">
+       <rect>
+        <x>514</x>
+        <y>400</y>
+        <width>91</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Сохранить</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbTaskDelete">
+      <property name="geometry">
+       <rect>
+        <x>414</x>
+        <y>400</y>
+        <width>91</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Удалить</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="formLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>260</y>
+        <width>271</width>
+        <height>22</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="formTaskTrue">
+       <property name="fieldGrowthPolicy">
+        <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+       </property>
+       <item row="0" column="0">
+        <widget class="QLabel" name="lTaskTrue">
+         <property name="text">
+          <string>Правильный ответ</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QLineEdit" name="leTaskTrue">
+         <property name="placeholderText">
+          <string>Укажите правильный ответ</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QLabel" name="lTasksWelcome">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>10</y>
+        <width>281</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt; font-weight:600;&quot;&gt;Здесь вы можете создать задание. Для этого:&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;1. Выберите тип задания.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;2. Введите название.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;3. Введите описание задания.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;4. Напеишите правильный ответ.&lt;/span&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;span style=&quot; font-size:8pt;&quot;&gt;5. Сохраните задание&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tabUsersEdit">
+     <attribute name="title">
+      <string>Управление пользователями и группами</string>
+     </attribute>
+     <widget class="QPushButton" name="pbUserSave">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>180</y>
+        <width>211</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Сохранить пользователя</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbRefresh">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>400</y>
+        <width>111</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Обновить список</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="formLayoutWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>281</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <layout class="QFormLayout" name="fUser">
+       <item row="0" column="0">
+        <widget class="QLabel" name="lGUID">
+         <property name="text">
+          <string>GUID:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QSpinBox" name="sbGUID">
+         <property name="maximum">
+          <number>2000000000</number>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="leLogin">
+         <property name="placeholderText">
+          <string>Логин для входа в систему</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="lLogin">
+         <property name="text">
+          <string>Логин:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="lUsername">
+         <property name="text">
+          <string>Имя:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="leUsername">
+         <property name="placeholderText">
+          <string>Отображаемое имя пользователя</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lePassword">
+         <property name="placeholderText">
+          <string>Пароль для входа в систему</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QCheckBox" name="cbIsAdmin">
+         <property name="text">
+          <string>Имеет права Администратора</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="lAdmin">
+         <property name="text">
+          <string>Админ:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="0">
+        <widget class="QLabel" name="lPassword">
+         <property name="text">
+          <string>Пароль</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="lGroup">
+         <property name="text">
+          <string>Группа:</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QComboBox" name="cbGroup"/>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QPushButton" name="pbUserDelete">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>180</y>
+        <width>161</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Удалить пользователя</string>
+      </property>
+     </widget>
+     <widget class="QWidget" name="verticalLayoutWidget_3">
+      <property name="geometry">
+       <rect>
+        <x>310</x>
+        <y>10</y>
+        <width>291</width>
+        <height>161</height>
+       </rect>
+      </property>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="lGroupEdit">
+         <property name="text">
+          <string>Редактирование групп:</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QListWidget" name="listGroup"/>
+       </item>
+       <item>
+        <layout class="QFormLayout" name="formLayout_2">
+         <property name="fieldGrowthPolicy">
+          <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+         </property>
+         <item row="0" column="0">
+          <widget class="QLabel" name="lGroupId">
+           <property name="text">
+            <string>ID</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QSpinBox" name="sbGroupID">
+           <property name="maximum">
+            <number>2000000000</number>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="lGroupName">
+           <property name="text">
+            <string>Название</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLineEdit" name="leGroupName">
+           <property name="placeholderText">
+            <string>Отображаемое название группы</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="spacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QTableWidget" name="tableUsers">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>220</y>
+        <width>591</width>
+        <height>171</height>
+       </rect>
+      </property>
+      <property name="editTriggers">
+       <set>QAbstractItemView::NoEditTriggers</set>
+      </property>
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+     <widget class="QPushButton" name="pbGroupDelete">
+      <property name="geometry">
+       <rect>
+        <x>500</x>
+        <y>180</y>
+        <width>101</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Удалить группу</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbGroupSave">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>180</y>
+        <width>91</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Сохранить</string>
+      </property>
+     </widget>
+    </widget>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>640</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources>
+  <include location="../../../resources/images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
