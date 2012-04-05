@@ -17,7 +17,6 @@ MainWindow::MainWindow(FlyCore *core, QWidget *parent) :
     connect(_core, SIGNAL(updateWorkStatus(fWork::WorkStatus)), this, SLOT(onUpdateWorkStatus(fWork::WorkStatus)));
 
     QMenu *mainMenu = this->menuBar()->addMenu(tr("&Главное"));
-    mainMenu->addAction(tr("Панель администратора"), this, SLOT(actionAdminPanel()));
     mainMenu->addAction(tr("Заврешить сеанс"), this, SLOT(actionDisconnect()));
     mainMenu->addAction(tr("Выход из программы"), this, SLOT(actionQuit()));
 
@@ -93,11 +92,10 @@ void MainWindow::onReceivePacket(quint16 opcode)
         in >> groupid; _core->user()->setGroupId(groupid);
         in >> group; _core->user()->setGroupName(group);
         in >> admin; _core->user()->setAdmin(admin);
-//        ui->lUsername->setText(name);
-//        ui->lGroup->setText(group);
-//        if (admin == true) {
-//            ui->adminPanel->setVisible(true);
-//        }
+
+        if (admin == true) {
+            this->menuBar()->addAction(tr("Панель администратора"), this, SLOT(actionAdminPanel()));
+        }
         FlyNetwork::doSendPacket(_sok, CMSG_WORK_STATUS);
     }
         break;
