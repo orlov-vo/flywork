@@ -2,8 +2,8 @@
 
 # output generic information about the core and buildtype chosen
 message("")
-message("* FlyWork rev. id        : ${rev_id_str}")
 message("* FlyWork rev. hash      : ${rev_hash}")
+message("* FlyWork rev. date      : ${rev_date}")
 if( UNIX )
   message("* FlyWork buildtype      : ${CMAKE_BUILD_TYPE}")
 endif()
