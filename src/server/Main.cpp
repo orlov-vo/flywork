@@ -30,15 +30,19 @@ void logOutput(QtMsgType type, const char *msg)
 
 int main(int argc, char *argv[])
 {
+    // Передаем аргументы в ядро Qt Framework
+    QCoreApplication a(argc, argv);
+
+    // Устанавливаем кодировку для всех наших текстов
     QTextCodec* codec =  QTextCodec::codecForName("UTF-8");
     QTextCodec::setCodecForTr(codec);
 
     // Устанавливаем свой лог-обработчик
     qInstallMsgHandler(logOutput);
 
-    QCoreApplication a(argc, argv);
-
-    printf("FlyWork Server: %s (%s) - <Ctrl-C> to stop\n", _HASH, _DATE);
+    // Выводим информацию в консоль о нашем приложении
+    printf("FlyWork Server:   %s     (%s)\n", _HASH, _DATE);
+    printf("Press <Ctrl-C> to stop this daemon.\n");
     printf("===============================================================\n");
     printf("  FFFFFFFF  FF       FFFFF           FFFFF             FF      \n");
     printf("  FFFFFFF   FF    FF  FFF             FFF              FF      \n");
@@ -52,7 +56,7 @@ int main(int argc, char *argv[])
     printf("          FFFFFFF          FF      FF                       FF \n");
     printf("===============================================================\n");
     printf("FlyWork is free software; you can redistribute it and/or modify\n");
-    printf("it under the terms of the GNU GPL v3. Source code is located:  \n");
+    printf("it under the terms of the GNU GPL v3.  Source code is  located:\n");
     printf(" - https://github.com/biziwalker/flywork                       \n");
     printf("===============================================================\n\n");
 
@@ -63,5 +67,6 @@ int main(int argc, char *argv[])
     //TODO: добавить возможность изменять адрес
     cServer->doStartServer(QHostAddress::LocalHost, 6425);
 
+    // Запускаем само приложение
     return a.exec();
 }
