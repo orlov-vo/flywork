@@ -45,12 +45,8 @@ void FlyClient::onConnect()
 void FlyClient::onDisconnect()
 {
     qDebug() << "Client disconnected";
-    // Если авторизован
-    if (_isAuthed) {
-        // Убираем из списка
-        emit removeUser(this);
-    }
-    deleteLater();
+    // Убираем из списка
+    emit removeUser(this);
 }
 
 void FlyClient::onError(QAbstractSocket::SocketError socketError) const

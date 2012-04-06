@@ -102,6 +102,7 @@ void FlyServer::incomingConnection(int handle)
 void FlyServer::onRemoveUser(FlyClient *client)
 {
     _clients.removeAt(_clients.indexOf(client));
+    client->deleteLater();
 }
 
 void FlyServer::doSendToAllPacket(quint16 command)
