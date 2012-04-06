@@ -82,18 +82,15 @@ void FlyClient::onReadyRead()
     else
         _blockSize = 0;
 
-
-
-//    if(!_isAuthed)
-//    {
-//        qDebug() << "State is" << _state;
-//        if(_state == true)
-//            if (command != CMSG_AUTH_PASSWORD)
-//                return;
-//        else
-//            if (command != CMSG_AUTH_USERNAME)
-//                return;
-//    }
+    if (!_isAuthed) {
+        if(_state) {
+            if (command != CMSG_AUTH_PASSWORD)
+                return;
+        } else {
+            if (command != CMSG_AUTH_USERNAME)
+                return;
+        }
+    }
 
     switch(command) {
     case CMSG_AUTH_USERNAME:
