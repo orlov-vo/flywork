@@ -52,7 +52,7 @@ private slots:
     void on_pbGroupDelete_clicked();
     void on_pbTaskDelete_clicked();
 
-
+    void on_pbSaveToDB_clicked();
 
 private:
     Ui::AdminWindow *ui;

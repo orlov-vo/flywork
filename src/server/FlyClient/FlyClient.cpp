@@ -364,6 +364,11 @@ void FlyClient::onReadyRead()
         FlyNetwork::doSendPacket(_sok, SMSG_TASK_SEND);
     }
         break;
+    case CMSG_SAVE_USERS_AND_GROUP:
+    {
+        FlyFactory::saveUsersAndGroups(_serv->users(), _serv->groups());
+    }
+        break;
     default:
     {
         qDebug() << "Receiver for this command not found!";

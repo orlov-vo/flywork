@@ -25,6 +25,7 @@ public:
     static FlyWork* work();
 
     static void saveWork(FlyWork* work, QList<FlyTask *> tasks);
+    static void saveUsersAndGroups(QList<FlyUser *> users, QList<FlyGroup *> groups);
 };
 
 #endif // FLYFACTORY_H

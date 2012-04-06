@@ -24,7 +24,7 @@ QList<FlyUser *> FlyFactory::users()
             admin->setAdmin(true);
 
             QDataStream out(&file);
-            out << fileprefix;
+            out << fileprefix.toAscii().data();
             out << (quint32)1;
             out << admin->guid();
             out << admin->login();
@@ -117,7 +117,7 @@ QList<FlyGroup *> FlyFactory::groups()
         qWarning() << "File \"./groups.fdb\" not found!";
         if (file.open(QIODevice::ReadWrite)) {
             QDataStream out(&file);
-            out << fileprefix;
+            out << fileprefix.toAscii().data();
             out << (quint32)0;
             file.close();
             qDebug() << "Created new \"./groups.fdb\"";
@@ -163,7 +163,7 @@ FlyWork* FlyFactory::work()
         qWarning() << "File \"./work.fdb\" not found!";
         if (file.open(QIODevice::ReadWrite)) {
             QDataStream out(&file);
-            out << fileprefix;
+            out << fileprefix.toAscii().data();
             out << work->title();
             out << work->endTime();
             out << (quint32)3;
@@ -217,7 +217,7 @@ void FlyFactory::saveWork(FlyWork *work, QList<FlyTask *> tasks)
     QFile file("./work.fdb");
     if (file.open(QIODevice::WriteOnly)) {
         QDataStream out(&file);
-        out << fileprefix;
+        out << fileprefix.toAscii().data();
         out << work->title();
         out << work->endTime();
         out << (quint32)tasks.size();
@@ -232,5 +232,46 @@ void FlyFactory::saveWork(FlyWork *work, QList<FlyTask *> tasks)
         qDebug() << "Successful saving work and task to \"./work.fdb\"";
     } else {
         qFatal("Could not create file %s", file.fileName().toLatin1());
+    }
+}
+
+void FlyFactory::saveUsersAndGroups(QList<FlyUser *> users, QList<FlyGroup *> groups)
+{
+    QString fileprefix_groups = "flyfactory_groups";
+
+    QFile file_groups("./groups.fdb");
+    if (file_groups.open(QIODevice::WriteOnly)) {
+        QDataStream out(&file_groups);
+        out << fileprefix_groups.toAscii().data();
+        out << groups.size();
+        for (int i = 0; i < groups.size(); i++) {
+            out << groups.at(i)->id();
+            out << groups.at(i)->name();
+        }
+        file_groups.close();
+        qDebug() << "Successful saving groups to \"./groups.fdb\"";
+    } else {
+        qFatal("Could not create file %s", file_groups.fileName().toLatin1());
+    }
+
+    QString fileprefix_users = "flyfactory_users";
+
+    QFile file_users("./users.fdb");
+    if (file_users.open(QIODevice::WriteOnly)) {
+        QDataStream out(&file_users);
+        out << fileprefix_users.toAscii().data();
+        out << users.size();
+        for (int i = 0; i < users.size(); i++) {
+            out << users.at(i)->guid();;
+            out << users.at(i)->login();
+            out << users.at(i)->username();
+            out << users.at(i)->hash();
+            out << users.at(i)->groupId();
+            out << users.at(i)->isAdmin();
+        }
+        file_users.close();
+        qDebug() << "Successful saving users to \"./users.fdb\"";
+    } else {
+        qFatal("Could not create file %s", file_users.fileName().toLatin1());
     }
 }

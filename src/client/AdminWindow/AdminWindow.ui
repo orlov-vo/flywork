@@ -40,7 +40,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <widget class="QWidget" name="tabWorkEdit">
      <attribute name="title">
@@ -592,6 +592,19 @@ p, li { white-space: pre-wrap; }
       </property>
       <property name="text">
        <string>Сохранить</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pbSaveToDB">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>400</y>
+        <width>171</width>
+        <height>23</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Сохранить в Базу Данных</string>
       </property>
      </widget>
     </widget>

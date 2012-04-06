@@ -49,7 +49,8 @@ enum Opcodes {
     SMSG_ADMIN_TASKS_GET            = 0x026,
     CMSG_TASK_SEND                  = 0x027,
     SMSG_TASK_SEND                  = 0x028,
-    NUM_MSG_TYPES                   = 0x029
+    CMSG_SAVE_USERS_AND_GROUP       = 0x029,
+    NUM_MSG_TYPES                   = 0x02A
 };
 
 

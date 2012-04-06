@@ -381,3 +381,15 @@ void AdminWindow::on_pbTaskDelete_clicked()
         FlyNetwork::doSendPacket(_sok, CMSG_ADMIN_TASK_DEL, block);
     }
 }
+
+void AdminWindow::on_pbSaveToDB_clicked()
+{
+    int ret = QMessageBox::information(
+                this,
+                tr("Сохранение в Базу Данных"),
+                tr("Вы желаете перезаписать на сервере данные пользователей и групп в соответствии с текущим положением?"),
+                QMessageBox::Yes | QMessageBox::Cancel,
+                QMessageBox::Cancel);
+    if (ret == QMessageBox::Yes)
+        FlyNetwork::doSendPacket(_sok, CMSG_SAVE_USERS_AND_GROUP);
+}

@@ -46,5 +46,6 @@ OpcodeHandler OpcodeTable[NUM_MSG_TYPES] =
     /*0x025*/ { "CMSG_ADMIN_TASKS_GET",             STATUS_NEVER },
     /*0x026*/ { "SMSG_ADMIN_TASKS_GET",             STATUS_NEVER },
     /*0x027*/ { "CMSG_TASK_SEND",                   STATUS_NEVER },
-    /*0x028*/ { "SMSG_TASK_SEND",                   STATUS_NEVER }
+    /*0x028*/ { "SMSG_TASK_SEND",                   STATUS_NEVER },
+    /*0x029*/ { "CMSG_SAVE_USERS_AND_GROUP",        STATUS_NEVER }
 };
