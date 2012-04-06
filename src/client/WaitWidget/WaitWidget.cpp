@@ -9,12 +9,6 @@ WaitWidget::WaitWidget(FlyCore *core, QWidget *parent) :
     onUpdateWorkStatus(fWork::statusNone);
 }
 
-//void WaitWidget::closeEvent(QCloseEvent *event)
-//{
-//    disconnect(this, SLOT(onUpdateWorkStatus(fWork::WorkStatus)));
-//    event->accept();
-//}
-
 void WaitWidget::onUpdateWorkStatus(fWork::WorkStatus status)
 {
     switch (status) {

@@ -14,13 +14,6 @@ WorkWidget::WorkWidget(FlyCore *core, QWidget *parent) :
     connect(_timer, SIGNAL(timeout()), this, SLOT(doUpdateTime()));
 }
 
-//void WorkWidget::closeEvent(QCloseEvent *event)
-//{
-//    disconnect(this, SLOT(onListTasksItemChanged(QListWidgetItem*,QListWidgetItem*)));
-//    disconnect(this, SLOT(doUpdateTime()));
-//    event->accept();
-//}
-
 void WorkWidget::reloadWidget()
 {
     ui->lUsername->setText(_core->user()->username());
