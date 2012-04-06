@@ -16,6 +16,8 @@ class FlyWork : public QObject
 public:
     explicit FlyWork(QObject *parent = 0);
     
+    void setId(QString id) { _id = id.toAscii(); }
+    QByteArray id() { return _id; }
     void setTitle(QString title) { _title = title; }
     QString title() { return _title; }
     void setEndTime(QTime endTime) { _endTime = endTime; }
@@ -26,6 +28,7 @@ public:
     bool isValid() { return _isValid; }
 
 private:
+    QByteArray _id;
     QString _title;
     QTime _endTime;
 

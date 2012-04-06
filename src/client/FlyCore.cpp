@@ -113,12 +113,19 @@ void FlyCore::onSokReadyRead()
 
 FlyTask* FlyCore::searchTask(quint32 id)
 {
-    for (int i = 0; i < _tasks.count(); ++i)
-    {
-        if (_tasks.at(i)->id() == id)
-        {
+    for (int i = 0; i < _tasks.count(); ++i) {
+        if (_tasks.at(i)->id() == id) {
             return _tasks.at(i);
         }
+    }
+    return NULL;
+}
+
+FlyAnswer* FlyCore::searchAnswer(quint32 id)
+{
+    for (int i = 0; i < _answers.size(); ++i) {
+        if (_answers.at(i)->id() == id)
+            return _answers.at(i);
     }
     return NULL;
 }

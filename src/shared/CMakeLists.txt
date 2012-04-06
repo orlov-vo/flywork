@@ -1,6 +1,7 @@
 # Copyright (C) 2012 TesJin Group <http://www.tesjin.ru/>
 
 # find headers files
+file(GLOB_RECURSE headers_FlyAnswer FlyAnswer/*.h)
 file(GLOB_RECURSE headers_FlyGroup FlyGroup/*.h)
 file(GLOB_RECURSE headers_FlyNetwork FlyNetwork/*.h)
 file(GLOB_RECURSE headers_FlyTask FlyTask/*.h)
@@ -9,6 +10,7 @@ file(GLOB_RECURSE headers_FlyWork FlyWork/*.h)
 file(GLOB headers_localdir *.h)
 
 # find cpp files
+file(GLOB_RECURSE sources_FlyAnswer FlyAnswer/*.cpp)
 file(GLOB_RECURSE sources_FlyGroup FlyGroup/*.cpp)
 file(GLOB_RECURSE sources_FlyNetwork FlyNetwork/*.cpp)
 file(GLOB_RECURSE sources_FlyTask FlyTask/*.cpp)
@@ -17,6 +19,7 @@ file(GLOB_RECURSE sources_FlyWork FlyWork/*.cpp)
 file(GLOB sources_localdir *.cpp)
 
 set(shared_HEADERS
+  ${headers_FlyAnswer}
   ${headers_FlyGroup}
   ${headers_FlyNetwork}
   ${headers_FlyTask}
@@ -26,6 +29,7 @@ set(shared_HEADERS
 )
 
 set(shared_SOURCES
+  ${sources_FlyAnswer}
   ${sources_FlyGroup}
   ${sources_FlyNetwork}
   ${sources_FlyTask}

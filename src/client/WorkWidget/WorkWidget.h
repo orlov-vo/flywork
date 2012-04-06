@@ -31,7 +31,7 @@ private slots:
     void onUpdateWork();
     void onUpdateTasks();
 
-    void on_pbSend_clicked();
+    void onAnswerDone();
     void on_pbAnswer_clicked();
 
 private:

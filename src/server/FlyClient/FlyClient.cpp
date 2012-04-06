@@ -45,6 +45,7 @@ void FlyClient::onConnect()
 void FlyClient::onDisconnect()
 {
     qDebug() << "Client disconnected";
+    FlyFactory::saveTasks(_serv->work(), _serv->tasks(), _user, _answers);
     // Убираем из списка
     emit removeUser(this);
 }
@@ -173,6 +174,8 @@ void FlyClient::onReadyRead()
         if(_serv->work()->isValid())
         {
             _serv->doSendWorkInfo(this);
+            _answers = FlyFactory::answers(_serv->work(), _user);
+            doSendAnswers();
         }
     }
         break;
@@ -354,7 +357,13 @@ void FlyClient::onReadyRead()
         quint32 id; QString answer;
         in >> id;
         in >> answer;
-        FlyNetwork::doSendPacket(_sok, SMSG_TASK_SEND);
+        FlyAnswer *found_answer = searchAnswer(id);
+        if (found_answer == NULL) {
+            FlyAnswer *temp = new FlyAnswer(id, answer);
+            _answers.append(temp);
+        } else {
+            found_answer->setAnswer(answer);
+        }
     }
         break;
     case CMSG_SAVE_USERS_AND_GROUP:
@@ -370,3 +379,23 @@ void FlyClient::onReadyRead()
     }
 }
 
+FlyAnswer* FlyClient::searchAnswer(quint32 id)
+{
+    for (int i = 0; i < _answers.size(); ++i) {
+        if (_answers.at(i)->id() == id)
+            return _answers.at(i);
+    }
+    return NULL;
+}
+
+void FlyClient::doSendAnswers()
+{
+    QByteArray block;
+    QDataStream out(&block, QIODevice::WriteOnly);
+    out << _answers.size();
+    for (int i = 0; i < _answers.size(); i++) {
+        out << (quint32)_answers.at(i)->id();
+        out << _answers.at(i)->answer();
+    }
+    FlyNetwork::doSendPacket(_sok, SMSG_TASK_SEND, block);
+}

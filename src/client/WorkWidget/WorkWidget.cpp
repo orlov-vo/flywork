@@ -38,7 +38,7 @@ void WorkWidget::onListTasksItemChanged(QListWidgetItem *newitem, QListWidgetIte
 {
     if (newitem == NULL || newitem == olditem)
         return;
-    ui->pbSend->setVisible(true);
+
     _currentTask = _core->searchTask(newitem->data(32).toUInt());
     if (_currentTask == NULL)
         return;
@@ -53,8 +53,12 @@ void WorkWidget::onListTasksItemChanged(QListWidgetItem *newitem, QListWidgetIte
         leAnswer = new QLineEdit();
         leAnswer->setPlaceholderText(tr("Введите ваш ответ"));
 
-        ui->formAnswers->insertRow(1, lAnswer, leAnswer);
+        FlyAnswer *found_answer = _core->searchAnswer(_currentTask->id());
+        if (found_answer != NULL)
+            leAnswer->setText(found_answer->answer());
 
+        ui->formAnswers->insertRow(1, lAnswer, leAnswer);
+        connect(leAnswer, SIGNAL(editingFinished()), this, SLOT(onAnswerDone()));
     }
     if (_currentTask->type() == fTask::tempFile) {
         lAnswer = new QLabel(tr("Ваш файл:"));
@@ -84,15 +88,17 @@ void WorkWidget::onUpdateTasks()
     }
 }
 
-void WorkWidget::on_pbSend_clicked()
+void WorkWidget::onAnswerDone()
 {
-    if (_currentTask->type() != fTask::inputBox)
-        return;
-    QByteArray block;
-    QDataStream out(&block, QIODevice::WriteOnly);
-    out << (quint32)_currentTask->id();
-    out << leAnswer->text();
-    FlyNetwork::doSendPacket(_core->socket(), CMSG_TASK_SEND, block);
+    if (_currentTask->type() == fTask::inputBox) {
+        QByteArray block;
+        QDataStream out(&block, QIODevice::WriteOnly);
+        out << (quint32)_currentTask->id();
+        out << leAnswer->text();
+        FlyAnswer *temp = new FlyAnswer(_currentTask->id(), leAnswer->text());
+        _core->addAnswer(temp);
+        FlyNetwork::doSendPacket(_core->socket(), CMSG_TASK_SEND, block);
+    }
 }
 
 void WorkWidget::on_pbAnswer_clicked()

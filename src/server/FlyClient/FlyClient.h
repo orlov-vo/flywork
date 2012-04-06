@@ -12,6 +12,7 @@
 
 #include "FlyServer.h"
 #include "FlyUser.h"
+#include "FlyAnswer.h"
 
 #include "FlyNetwork.h"
 #include "Opcodes.h"
@@ -36,6 +37,9 @@ public:
     void doSendPacket(quint16 command) {
         FlyNetwork::doSendPacket(_sok, command);
     }
+    void doSendAnswers();
+
+    FlyAnswer* searchAnswer(quint32 id);
 
 signals:
     void removeUser(FlyClient *client);
@@ -57,7 +61,7 @@ private:
     QString t_username;
     QByteArray t_hash;
 
-
+    QList<FlyAnswer *> _answers;
 };
 
 #endif // MYCLIENT_H

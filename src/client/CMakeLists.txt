@@ -68,6 +68,7 @@ include_directories(
   ${CMAKE_BINARY_DIR}
   ${CMAKE_CURRENT_BINARY_DIR}
   ${CMAKE_SOURCE_DIR}/src/shared
+  ${CMAKE_SOURCE_DIR}/src/shared/FlyAnswer
   ${CMAKE_SOURCE_DIR}/src/shared/FlyGroup
   ${CMAKE_SOURCE_DIR}/src/shared/FlyNetwork
   ${CMAKE_SOURCE_DIR}/src/shared/FlyTask

@@ -31,6 +31,9 @@ public:
     void doSendWorkInfo();
     void doSendWorkInfo(FlyClient *client);
 
+    void doSendAnswers();
+    void doSendAnswers(FlyClient *client);
+
     void doSendToAllPacket(quint16 command, QByteArray block);
     void doSendToAllPacket(quint16 command);
 

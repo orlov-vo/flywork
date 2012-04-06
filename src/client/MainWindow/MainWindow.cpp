@@ -101,6 +101,16 @@ void MainWindow::onReceivePacket(quint16 opcode)
         break;
     case SMSG_TASK_SEND:
     {
+        int count;
+        in >> count;
+        _core->clearAnswers();
+        for (int i = 0; i < count; ++i) {
+            quint32 id; QString answer;
+            in >> id;
+            in >> answer;
+            FlyAnswer *temp = new FlyAnswer(id, answer);
+            _core->addAnswer(temp);
+        }
     }
         break;
     default:
