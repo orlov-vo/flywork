@@ -69,6 +69,7 @@ void FlyCore::onSokDisconnected()
                                        QMessageBox::Ignore);
         if (ret == QMessageBox::Close)
         {
+            QApplication::closeAllWindows();
             startSession();
         }
     }
