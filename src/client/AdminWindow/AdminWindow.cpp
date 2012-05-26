@@ -166,7 +166,7 @@ void AdminWindow::onReceivePacket(quint16 opcode)
         ui->listGroup->addItem(group_none);
         for(int i = 0; i < count; i++)
         {
-            int idx = i++;
+            int idx = i + 1;
             in >> id;
             in >> name;
             QListWidgetItem *item = new QListWidgetItem(name);
@@ -247,7 +247,7 @@ void AdminWindow::onComboBoxTasksItemChanged(int index)
             ui->cbTaskType->setCurrentIndex(i);
 
     ui->leTaskName->setText(ui->cbTaskId->itemData(index, 34).toString());
-    ui->teTaskDesc->setHtml(ui->cbTaskId->itemData(index, 35).toString());
+    ui->teTaskDesc->setPlainText(ui->cbTaskId->itemData(index, 35).toString());
     ui->leTaskTrue->setText(ui->cbTaskId->itemData(index, 36).toString());
 }
 
@@ -266,13 +266,18 @@ void AdminWindow::tasks()
     FlyNetwork::doSendPacket(_sok, CMSG_ADMIN_TASKS_GET);
 }
 
-void AdminWindow::on_pbSave_clicked()
+void AdminWindow::on_pbUpdateWork_clicked()
 {
     QByteArray block;
     QDataStream out(&block, QIODevice::WriteOnly);
     out << ui->leWorkTitle->text();
     out << ui->teEndTime->time();
     FlyNetwork::doSendPacket(_sok, CMSG_ADMIN_INFO_SAVE, block);
+}
+
+void AdminWindow::on_pbSaveWork_clicked()
+{
+    FlyNetwork::doSendPacket(_sok, CMSG_SAVE_WORK);
 }
 
 void AdminWindow::on_pbWorkStatus_clicked()

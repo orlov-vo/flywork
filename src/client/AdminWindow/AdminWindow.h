@@ -35,7 +35,8 @@ private slots:
     void users();
     void tasks();
 
-    void on_pbSave_clicked();
+    void on_pbUpdateWork_clicked();
+    void on_pbSaveWork_clicked();
 
     void onTableUsersItemChanged(QTableWidgetItem *newitem, QTableWidgetItem *olditem);
     void onListGroupItemChanged(QListWidgetItem *newitem, QListWidgetItem *olditem);

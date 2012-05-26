@@ -19,6 +19,18 @@ void WorkWidget::reloadWidget()
     ui->lUsername->setText(_core->user()->username());
     ui->lGroup->setText(_core->user()->groupName());
 
+    ui->gbTask->setTitle(tr("Система тестирования FlyWork"));
+    ui->tbContent->setHtml(
+        tr("<h2>Добро пожаловать!</h2>") +
+        tr("Приветствуем Вас в интерактивной системе тестирования! Работа уже началась, однако мы можем кратко помочь Вам разобраться с программой. Для этого прочтите данный текст.") +
+        tr("<ul>") +
+        tr("<li>Справа, в контекстном меню, вы можете перемещаться по заданиям.</li>") +
+        tr("<li>Задания бывают различных типов: с выбором правильного ответа, работой с файлом</li>") +
+        tr("<li>Все внесенные ответы, а также файлы сразу же сохраняются.</li>") +
+        tr("<li>Изменять ответы можно сколько угодно, главное успеть внести изменения до окончания работы.</li>") +
+        tr("</ul>") +
+        tr("<b>Желаем Вам успехов!</b>"));
+
     _timer->start(1000);
 }
 
@@ -44,7 +56,7 @@ void WorkWidget::onListTasksItemChanged(QListWidgetItem *newitem, QListWidgetIte
         return;
 
     ui->gbTask->setTitle(_currentTask->name());
-    ui->tbContent->setText(_currentTask->content());
+    ui->tbContent->setHtml(_currentTask->content());
 
     _core->clearLayout(ui->formAnswers);
 

@@ -28,6 +28,7 @@ FlyClient::FlyClient(int desc, FlyServer *serv, QObject *parent) :QObject(parent
     connect(_sok, SIGNAL(disconnected()), this, SLOT(onDisconnect()));
     connect(_sok, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
     connect(_sok, SIGNAL(error(QAbstractSocket::SocketError)), this, SLOT(onError(QAbstractSocket::SocketError)));
+    connect(_serv, SIGNAL(updateWorkStatus(fWork::WorkStatus)), this, SLOT(onUpdateWorkStatus(fWork::WorkStatus)));
 
     qDebug() << "Client connected" << desc;
 }
@@ -371,6 +372,11 @@ void FlyClient::onReadyRead()
         FlyFactory::saveUsersAndGroups(_serv->users(), _serv->groups());
     }
         break;
+    case CMSG_SAVE_WORK:
+    {
+        FlyFactory::saveWork(_serv->work(), _serv->tasks());
+    }
+        break;
     default:
     {
         qDebug() << "Receiver for this command not found!";
@@ -398,4 +404,15 @@ void FlyClient::doSendAnswers()
         out << _answers.at(i)->answer();
     }
     FlyNetwork::doSendPacket(_sok, SMSG_TASK_SEND, block);
+}
+
+void FlyClient::onUpdateWorkStatus(fWork::WorkStatus status)
+{
+    switch(status) {
+    case fWork::statusStop:
+        FlyFactory::saveTasks(_serv->work(), _serv->tasks(), _user, _answers);
+        break;
+    default:
+        break;
+    }
 }

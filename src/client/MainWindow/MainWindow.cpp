@@ -16,7 +16,7 @@ MainWindow::MainWindow(FlyCore *core, QWidget *parent) :
     connect(_core, SIGNAL(receivePacket(quint16)), this, SLOT(onReceivePacket(quint16)));
     connect(_core, SIGNAL(updateWorkStatus(fWork::WorkStatus)), this, SLOT(onUpdateWorkStatus(fWork::WorkStatus)));
 
-    QMenu *mainMenu = this->menuBar()->addMenu(tr("&Главное"));
+    QMenu *mainMenu = this->menuBar()->addMenu(tr("&Главная"));
     mainMenu->addAction(tr("Заврешить сеанс"), this, SLOT(actionDisconnect()));
     mainMenu->addAction(tr("Выход из программы"), this, SLOT(actionQuit()));
 
